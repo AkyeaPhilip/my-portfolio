@@ -1,0 +1,164 @@
+/* ===== GLOBAL ===== */
+html{scroll-behavior:smooth}
+
+body{
+  background:linear-gradient(-45deg,#020617,#0f172a,#1e293b,#020617);
+  background-size:400% 400%;
+  animation:gradientBG 18s ease infinite;
+  color:white;
+  font-size:19px;
+  font-family:Poppins,sans-serif;
+  overflow-x:hidden;
+}
+@keyframes gradientBG{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+/* ===== PREMIUM NAVBAR ===== */
+nav{
+  background:rgba(2,6,23,0.75);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+/* ===== MOBILE SIDEBAR ===== */
+#mobileMenu{
+  background:#020617;
+  transform:translateX(-100%);
+  transition:.3s;
+}
+#mobileMenu.show{transform:translateX(0)}
+
+#wires{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:-1;
+  background:#020617;
+}
+
+/* ===== PREMIUM GLASS CARD ===== */
+.card{
+  background:rgba(255,255,255,0.1);
+  backdrop-filter:blur(14px);
+  border-radius:20px;
+  padding:22px;
+  box-shadow:0 15px 45px rgba(0,0,0,.6);
+  transition:.4s ease;
+}
+.card:hover{
+  transform:translateY(-10px) scale(1.02);
+}
+
+/* ===== SKILLS BAR ===== */
+.progress{
+  background:#111827;
+  border-radius:10px;
+  overflow:hidden;
+  height:15px;
+}
+.progress div{
+  height:15px;
+  background:#6366f1;
+  animation:loadBar 15s ease forwards;
+}
+@keyframes loadBar{
+  from{width:0}
+}
+
+/* ===== FADE SCROLL ANIMATION ===== */
+.fade-up{
+  opacity:0;
+  transform:translateY(60px) scale(.95);
+  transition:1s cubic-bezier(.19,1,.22,1);
+}
+.fade-up.show{
+  opacity:1;
+  transform:translateY(0) scale(1);
+}
+
+/* ===== CURSOR GLOW ===== */
+#cursor{
+  width:40px;
+  height:40px;
+  background:#6366f1;
+  position:fixed;
+  border-radius:50%;
+  pointer-events:none;
+  filter:blur(25px);
+  z-index:9999;
+}
+
+/* ===== WHATSAPP BUTTON ===== */
+.whatsapp{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25D366;
+  padding:15px;
+  border-radius:50%;
+  font-size:26px;
+  z-index:99;
+}
+
+/* ===== MOBILE MENU PRO STYLE ===== */
+#menuOverlay{
+  position:fixed;
+  top:0;left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.5);
+  backdrop-filter:blur(4px);
+  z-index:40;
+  opacity:0;
+  pointer-events:none;
+  transition:.3s;
+}
+
+#menuOverlay.show{
+  opacity:1;
+  pointer-events:auto;
+}
+
+#mobileMenu{
+  position:fixed;
+  top:0;
+  left:0;
+  width:280px;
+  height:100%;
+  background:rgba(2,6,23,0.95);
+  backdrop-filter:blur(14px);
+  box-shadow:10px 0 40px rgba(0,0,0,.8);
+  transform:translateX(-100%);
+  transition:.35s ease;
+  z-index:50;
+  padding:20px;
+}
+
+#mobileMenu.show{
+  transform:translateX(0);
+}
+
+.menu-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-size:22px;
+  font-weight:bold;
+  margin-bottom:25px;
+}
+
+.menu-links a{
+  display:block;
+  padding:14px 0;
+  font-size:20px;
+  font-weight:600;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+.menu-links a:hover{
+  color:#6366f1;
+}

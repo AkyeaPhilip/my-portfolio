@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Akyea Philip Portfolio</title>
+<link rel="stylesheet" href="index.css">
+<script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body>
+
+<!-- CURSOR -->
+<div id="cursor"></div>
+
+<canvas id="wires"></canvas>
+
+<!-- NAVBAR -->
+<nav class="fixed top-0 w-full p-4 flex justify-between items-center z-50">
+  <h1 class="text-x2 font-bold">PORTFOLIO</h1>
+
+  <div class="hidden md:flex gap-6 text-1g">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <button onclick="openMenu()" class="md:hidden text-3xl">☰</button>
+</nav>
+
+<!-- MOBILE OVERLAY -->
+<div id="menuOverlay" onclick="closeMenu()"></div>
+
+<!-- MOBILE SIDEBAR -->
+<div id="mobileMenu">
+  <div class="menu-header">
+    <h2>Menu</h2>
+    <button onclick="closeMenu()">✖</button>
+  </div>
+
+  <div class="menu-links">
+    <a onclick="closeMenu()" href="#home">Home</a>
+    <a onclick="closeMenu()" href="#about">About</a>
+    <a onclick="closeMenu()" href="#skills">Skills</a>
+    <a onclick="closeMenu()" href="#projects">Projects</a>
+    <a onclick="closeMenu()" href="#contact">Contact</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section id="home" class="h-screen flex flex-col justify-center items-center text-center px-4">
+  <h2 class="text-6xl font-extrabold tracking-wide">Akyea Philip</h2>
+
+  <p class="text-3xl mt-4 font-semibold text-indigo-400">
+    <span id="typing"></span>
+  </p>
+
+  <p class="mt-6 opacity-70 max-w-xl">
+    UI/UX DESIGNER | GRAPHIC DESIGNER
+  </p>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="p-10 max-w-5xl mx-auto fade-up">
+  <h3 class="text-4xl font-bold mb-4">About Me</h3>
+  <div class="card text-xl leading-relaxed">
+    Creative UI/UX and graphic designer with a Visual Arts background. Skilled in designing clean, user-friendly
+    mobile and web interfaces using Figma and Adobe Photoshop. Strong understanding of responsive design,
+    layout, and visual hierarchy. Open to freelance and entry-level opportunities.
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="p-10 max-w-5xl mx-auto fade-up">
+  <h3 class="text-4xl font-bold mb-6">My Skills</h3>
+
+  <div class="card space-y-6">
+    <div>
+      <span class="font-semibold">Figma</span>
+      <div class="progress"><div style="width:85%"></div></div>
+    </div>
+
+    <div>
+      <span class="font-semibold">Adobe Photoshop</span>
+      <div class="progress"><div style="width:70%"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="p-10 max-w-6xl mx-auto fade-up">
+  <h3 class="text-4xl font-bold mb-6">Projects</h3>
+
+  <div class="grid md:grid-cols-3 gap-6">
+
+    <a href="https://www.figma.com/design/X0S3OCxWRe8y0egdBS8i0v/NovaShop" target="_blank" class="card block">
+      <img src="images/Project1.png" class="rounded-xl w-full h-48 object-cover shadow-xl">
+      <p class="mt-2 font-semibold">Mobile Shopping App UI/UX</p>
+    </a>
+
+    <a href="#" class="card block">
+      <img src="project2.jpg" class="rounded-xl w-full h-48 object-cover shadow-xl">
+      <p class="mt-2 font-semibold">Brand Identity Design</p>
+    </a>
+
+    <a href="#" class="card block">
+      <img src="project3.jpg" class="rounded-xl w-full h-48 object-cover shadow-xl">
+      <p class="mt-2 font-semibold">Flyer Design Project</p>
+    </a>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="p-10 max-w-5xl mx-auto text-center fade-up">
+  <h3 class="text-4xl font-bold mb-4">Contact Me</h3>
+
+  <div class="card space-y-4 text-xl">
+    <p>Email: <a href="mailto:funkyfrosh33@gmail.com" class="text-indigo-400 hover:underline">funkyfrosh33@gmail.com</a></p>
+    <p>LinkedIn: <a href="https://linkedin.com/in/akyea-philip-905183247" target="_blank" class="text-indigo-400 hover:underline">linkedin.com/in/akyea-philip</a></p>
+  </div>
+</section>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/0556058232" class="whatsapp">💬</a>
+
+<!-- JAVASCRIPT -->
+<script>
+
+function openMenu(){
+  document.getElementById("mobileMenu").classList.add("show");
+  document.getElementById("menuOverlay").classList.add("show");
+}
+
+function closeMenu(){
+  document.getElementById("mobileMenu").classList.remove("show");
+  document.getElementById("menuOverlay").classList.remove("show");
+}
+
+
+/* TYPING EFFECT */
+const text=["Mobile Application Design","Responsive Web Design","Figma","WireFraming","Prototyping","Auot Layout","Constraint Component"];
+let index=0,charIndex=0;
+const typing=document.getElementById("typing");
+
+function typeText(){
+  if(charIndex<text[index].length){
+    typing.textContent+=text[index].charAt(charIndex);
+    charIndex++;
+    setTimeout(typeText,100);
+  }else setTimeout(deleteText,1500);
+}
+function deleteText(){
+  if(charIndex>0){
+    typing.textContent=text[index].substring(0,charIndex-1);
+    charIndex--;
+    setTimeout(deleteText,50);
+  }else{
+    index=(index+1)%text.length;
+    setTimeout(typeText,500);
+  }
+}
+typeText();
+
+/* SCROLL FADE ANIMATION */
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting) entry.target.classList.add("show");
+  });
+});
+document.querySelectorAll(".fade-up").forEach(el=>observer.observe(el));
+
+/* CURSOR GLOW */
+const cursor=document.getElementById("cursor");
+document.addEventListener("mousemove",e=>{
+  cursor.style.left=e.clientX+"px";
+  cursor.style.top=e.clientY+"px";
+});
+
+const canvas = document.getElementById("wires");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let points = [];
+const numPoints = 80;
+const maxDistance = 120;
+
+for(let i=0;i<numPoints;i++){
+  points.push({
+    x:Math.random()*canvas.width,
+    y:Math.random()*canvas.height,
+    vx:(Math.random()-0.5)*0.5,
+    vy:(Math.random()-0.5)*0.5
+  });
+}
+
+function draw(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  for(let i=0;i<points.length;i++){
+    let p = points[i];
+    p.x += p.vx;
+    p.y += p.vy;
+
+    if(p.x<0||p.x>canvas.width) p.vx*=-1;
+    if(p.y<0||p.y>canvas.height) p.vy*=-1;
+
+    // draw dot
+    ctx.fillStyle="rgba(99,102,241,0.6)";
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,2,0,Math.PI*2);
+    ctx.fill();
+
+    // draw lines
+    for(let j=i+1;j<points.length;j++){
+      let p2=points[j];
+      let dx=p.x-p2.x;
+      let dy=p.y-p2.y;
+      let dist=Math.sqrt(dx*dx+dy*dy);
+
+      if(dist<maxDistance){
+        ctx.strokeStyle=`rgba(99,102,241,${1-dist/maxDistance})`;
+        ctx.lineWidth=1;
+        ctx.beginPath();
+        ctx.moveTo(p.x,p.y);
+        ctx.lineTo(p2.x,p2.y);
+        ctx.stroke();
+      }
+    }
+  }
+
+  requestAnimationFrame(draw);
+}
+
+draw();
+
+window.addEventListener("resize",()=>{
+  canvas.width=window.innerWidth;
+  canvas.height=window.innerHeight;
+});
+
+
+</script>
+
+</body>
+</html>
